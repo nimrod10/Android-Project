@@ -1,5 +1,6 @@
 package com.example.nimrod.android_project;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,71 +17,16 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
-    private Button button;
-
-    private EditText editEmail;
-    private EditText editPassword;
-
-    private TextView signUpTextView;
-
-    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register);
+        setContentView(R.layout.activity_main);
+        finish();
 
-
-        button =(Button)findViewById(R.id.submitRegister);
-
-        editEmail = (EditText)findViewById(R.id.editTextMail);
-        editPassword = (EditText)findViewById(R.id.editTextPassword);
-
-        signUpTextView = (TextView)findViewById(R.id.registerWarning);
-
-        button.setOnClickListener(this);
-        signUpTextView.setVisibility(View.INVISIBLE);
-
-        firebaseAuth = FirebaseAuth.getInstance();
+        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
     }
 
-    private void RegisterUser(){
-
-        String email = editEmail.getText().toString().trim();
-        String password = editPassword.getText().toString().trim();
-
-        if(TextUtils.isEmpty((email))){
-            Toast.makeText(this, "Email is empty.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if(TextUtils.isEmpty((password))){
-            Toast.makeText(this, "Password is empty.",Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        firebaseAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(MainActivity.this, "Registration has succeded.",Toast.LENGTH_SHORT).show();
-                        }else{
-                            Toast.makeText(MainActivity.this," Failed to register.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-        });
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        if(v == button){
-
-
-            RegisterUser();
-        }
-    }
-}
+  }

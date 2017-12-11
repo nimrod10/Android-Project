@@ -29,7 +29,7 @@
 
         <Button
             android:text="Log in"
-            android:id = "@+id/SubmitLogin"
+            android:id = "@+id/submitLogin"
             android:layout_margin="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

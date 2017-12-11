@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">android_project</string>
+    <string name="facebook_application_id" translatable="false">173266459939446</string>
 </resources>
