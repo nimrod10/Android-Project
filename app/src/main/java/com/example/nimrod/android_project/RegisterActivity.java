@@ -39,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
       //  signUpTextView = (TextView)findViewById(R.id.registerWarning);
 
         button.setOnClickListener(this);
-        signUpTextView.setVisibility(View.INVISIBLE);
+      //  signUpTextView.setVisibility(View.INVISIBLE);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
