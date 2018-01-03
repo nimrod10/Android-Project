@@ -33,6 +33,15 @@
             android:layout_marginTop="20dp"
             android:text="Upload"
             android:id="@+id/uploadButton"/>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="20dp"
+            android:text="Back"
+            android:id="@+id/Back"/>
+
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"

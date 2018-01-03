@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:cropToPadding="true"
             android:scaleType="center"
             app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />

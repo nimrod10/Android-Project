@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
+    import android.util.Log;
+    import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,7 +21,8 @@ import com.squareup.picasso.Picasso;
 
     public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private RecyclerView mRecyclerView;
+        private static final int REQUEST_CODE = 1 ;
+        private RecyclerView mRecyclerView;
     private DatabaseReference mDatabase;
 
     private TextView offlineText;
@@ -99,10 +101,33 @@ import com.squareup.picasso.Picasso;
 
                     @Override
                     protected void populateViewHolder(HirdetesViewHolder viewHolder, Hirdetes model, int position) {
+                        final String cim = model.getCim();
+                        final String author = model.getAuthor();
+                        final String rovidLeiras = model.getRovidLeiras();
+                        final String hosszuLeiras = model.getHosszuLeiras();
+                        final String image = model.getKep();
+
                         viewHolder.SetCim(model.getCim());
                         viewHolder.SetAuthor(model.getAuthor());
                         viewHolder.SetRovidLeiras(model.getRovidLeiras());
                         viewHolder.SetImage(getApplicationContext(), model.getKep());
+                        viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(MainActivity.this,HirdetesDetailedActivity.class);
+                              // v.getContext().startActivity(intent);
+                               intent.putExtra("cim",cim);
+                               intent.putExtra("author",author);
+                               //intent.putExtra("rovidLeiras",rovidLeiras);
+                               intent.putExtra("hosszuLeiras", hosszuLeiras);
+                               intent.putExtra("image",image);
+                                Log.d("OnClickView",cim);
+                               // startActivityForResult(intent,REQUEST_CODE);
+                                startActivity(intent);
+                                finish();
+
+                            }
+                        });
                     }
                 };
                 mRecyclerView.setAdapter(firebaseRecyclerAdapter);

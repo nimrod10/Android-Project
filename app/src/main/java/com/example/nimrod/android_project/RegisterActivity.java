@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private Button button;
+    private Button backButton;
 
     private EditText editEmail;
     private EditText editPassword;
@@ -35,12 +36,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         editEmail = (EditText)findViewById(R.id.editTextMail);
         editPassword = (EditText)findViewById(R.id.editTextPassword);
 
-        signUpTextView = (TextView)findViewById(R.id.registerWarning);
+      //  signUpTextView = (TextView)findViewById(R.id.registerWarning);
 
         button.setOnClickListener(this);
         signUpTextView.setVisibility(View.INVISIBLE);
 
         firebaseAuth = FirebaseAuth.getInstance();
+
+        backButton = (Button) findViewById(R.id.Back);
+        backButton.setOnClickListener(this);
     }
 
     private void RegisterUser(){
@@ -82,6 +86,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             }else{
                 Toast.makeText(this, "You're not online. Please try again later...", Toast.LENGTH_SHORT).show();
             }
+        }
+
+        if(backButton == v){
+            finish();
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+
         }
     }
 }

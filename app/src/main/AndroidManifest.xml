@@ -22,7 +22,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".HirdetesActivity"></activity>
+        <activity android:name=".HirdetesActivity" />
+        <activity android:name=".HirdetesDetailedActivity"></activity>
     </application>
 
 </manifest>

@@ -20,6 +20,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private Button button;
     private Button registerButton;
+    private Button backButton;
 
 
     private EditText editEmail;
@@ -51,6 +52,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         registerButton=(Button) findViewById(R.id.registerButton);
         registerButton.setOnClickListener(this);
+
+        backButton = (Button) findViewById(R.id.Back);
+        backButton.setOnClickListener(this);
     }
 
     private void LoginUser(){
@@ -95,6 +99,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(v==registerButton){
             finish();
             startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+        }
+
+        if(v == backButton){
+            finish();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
     }
 }

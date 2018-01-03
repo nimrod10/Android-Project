@@ -15,6 +15,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private TextView userEmail;
     private Button logoutButton;
     private Button uploadButton;
+    private Button backButton;
 
     private FirebaseAuth firebaseAuth;
 
@@ -29,8 +30,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         uploadButton = (Button) findViewById(R.id.uploadButton);
 
+        backButton = (Button) findViewById(R.id.Back);
+
         logoutButton.setOnClickListener(this);
         uploadButton.setOnClickListener(this);
+        backButton.setOnClickListener(this);
 
         firebaseAuth = firebaseAuth.getInstance();
         if(firebaseAuth.getCurrentUser() == null){
@@ -60,6 +64,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         if(v == uploadButton){
             finish();
             startActivity(new Intent(getApplicationContext(),HirdetesActivity.class));
+        }
+
+        if(v==backButton){
+            finish();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
     }
 }
