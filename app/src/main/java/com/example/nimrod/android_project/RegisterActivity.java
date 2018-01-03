@@ -77,7 +77,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         if(v == button){
-            RegisterUser();
+            if(AppStatus.getInstance(this).isOnline()){
+                RegisterUser();
+            }else{
+                Toast.makeText(this, "You're not online. Please try again later...", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

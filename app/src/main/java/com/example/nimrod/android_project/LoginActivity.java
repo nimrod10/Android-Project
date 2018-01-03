@@ -1,9 +1,9 @@
 package com.example.nimrod.android_project;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -16,11 +16,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import org.w3c.dom.Text;
-
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button button;
+    private Button registerButton;
+
 
     private EditText editEmail;
     private EditText editPassword;
@@ -48,6 +48,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             finish();
             startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
         }
+
+        registerButton=(Button) findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(this);
     }
 
     private void LoginUser(){
@@ -85,6 +88,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         if(v == button)
-            LoginUser();
+            if(AppStatus.getInstance(this).isOnline())
+                LoginUser();
+            else
+                Toast.makeText(this, "You're not online. Please try again later...", Toast.LENGTH_SHORT).show();
+        if(v==registerButton){
+            finish();
+            startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+        }
     }
 }

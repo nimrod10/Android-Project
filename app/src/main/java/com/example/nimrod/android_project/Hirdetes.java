@@ -27,7 +27,7 @@ public class Hirdetes {
         this.rovidLeiras = rovidLeiras;
         this.hosszuLeiras = hosszuLeiras;
         this.kep = kep;
-        imageRef = new ArrayList<String>();
+     //   imageRef = new ArrayList<String>();
 
     }
 

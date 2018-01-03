@@ -27,6 +27,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 
 public class HirdetesActivity extends AppCompatActivity implements View.OnClickListener {
@@ -80,11 +83,11 @@ public class HirdetesActivity extends AppCompatActivity implements View.OnClickL
         Hirdetes hirdetes = new Hirdetes(userName,cimSTR,rovidLeirasSTR,hosszuLeirasSTR,kep);
 
         HashMap<String,String> dataMap = new HashMap<String,String>();
-        dataMap.put("User",hirdetes.author);
-        dataMap.put("Cim",hirdetes.cim);
-        dataMap.put("RovidLeiras", hirdetes.rovidLeiras);
-        dataMap.put("HosszuLeiras", hirdetes.hosszuLeiras);
-        dataMap.put("Kep",hirdetes.kep);
+        dataMap.put("author",hirdetes.author);
+        dataMap.put("cim",hirdetes.cim);
+        dataMap.put("rovidLeiras", hirdetes.rovidLeiras);
+        dataMap.put("hosszuLeiras", hirdetes.hosszuLeiras);
+        dataMap.put("kep",hirdetes.kep);
 
         mDatabase.push().setValue(dataMap).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -137,8 +140,10 @@ public class HirdetesActivity extends AppCompatActivity implements View.OnClickL
             UploadToFirebase(rovidLeirasSTR, hosszuLeirasSTR, cimSTR);
 
         } else {
-
-            StorageReference riversRef = mStorageRef.child("images/rivers.jpg");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+            Date date = new Date();
+            String dateSTR = dateFormat.format(date);
+            StorageReference riversRef = mStorageRef.child("images/" + dateSTR);
 
             riversRef.putFile(filepath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -174,7 +179,10 @@ public class HirdetesActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         if(uploadButton == v){
-            UploadFile();
+            if(AppStatus.getInstance(this).isOnline())
+                UploadFile();
+            else
+                Toast.makeText(this, "You're not online. Please try again later.", Toast.LENGTH_SHORT).show();
            // finish();
             //startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
 
