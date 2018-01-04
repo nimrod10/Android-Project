@@ -1,10 +1,8 @@
 package com.example.nimrod.android_project;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -25,8 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -41,7 +39,6 @@ public class HirdetesActivity extends AppCompatActivity implements View.OnClickL
     private EditText hosszuLeiras;
     private EditText cim;
 
-    private Button chooseButton;
 
     private ImageView uploadImage;
 
@@ -53,6 +50,8 @@ public class HirdetesActivity extends AppCompatActivity implements View.OnClickL
 
     private String kep="";
 
+    private Button backButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +61,6 @@ public class HirdetesActivity extends AppCompatActivity implements View.OnClickL
 
         uploadButton.setOnClickListener(this);
 
-        chooseButton = (Button) findViewById(R.id.chooseButton);
-
-        chooseButton.setOnClickListener(this);
 
         rovidLeiras = (EditText) findViewById(R.id.rovidLeiras);
         hosszuLeiras = (EditText) findViewById(R.id.hosszuLeiras);
@@ -75,6 +71,10 @@ public class HirdetesActivity extends AppCompatActivity implements View.OnClickL
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
         uploadImage = (ImageView) findViewById(R.id.uploadImage);
+        uploadImage.setOnClickListener(this);
+
+        backButton = (Button) findViewById(R.id.Back);
+        backButton.setOnClickListener(this);
     }
 
     private void UploadToFirebase(String rovidLeirasSTR, String hosszuLeirasSTR, String cimSTR){
@@ -187,10 +187,16 @@ public class HirdetesActivity extends AppCompatActivity implements View.OnClickL
             //startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
 
         }
-        if(chooseButton == v){
+        if(uploadImage == v){
 
             SelectPicture();
 
+        }
+
+        if(backButton==v)
+        {
+            finish();
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
         }
     }
 
@@ -201,12 +207,7 @@ public class HirdetesActivity extends AppCompatActivity implements View.OnClickL
         if(requestCode == GALLERY_RESULT_CODE && resultCode == RESULT_OK){
 
             filepath = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),filepath);
-                uploadImage.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Picasso.with(getApplicationContext()).load(filepath).into(uploadImage);
         }
     }
 }

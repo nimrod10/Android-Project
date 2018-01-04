@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         button.setOnClickListener(this);
 
-        firebaseAuth = firebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         if(firebaseAuth.getCurrentUser()!=null){
             finish();
@@ -55,6 +55,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         backButton = (Button) findViewById(R.id.Back);
         backButton.setOnClickListener(this);
+
+
     }
 
     private void LoginUser(){

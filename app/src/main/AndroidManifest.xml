@@ -23,7 +23,8 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".HirdetesActivity" />
-        <activity android:name=".HirdetesDetailedActivity"></activity>
+        <activity android:name=".HirdetesDetailedActivity" />
+        <activity android:name=".PasswordChangeActivity"></activity>
     </application>
 
 </manifest>

@@ -37,6 +37,14 @@
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:id="@+id/changePassword"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="140dp"
+            android:text="Change password"/>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="140dp"
             android:layout_marginTop="20dp"
             android:text="Back"
