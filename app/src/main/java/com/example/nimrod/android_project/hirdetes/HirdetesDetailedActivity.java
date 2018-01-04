@@ -1,4 +1,4 @@
-package com.example.nimrod.android_project;
+package com.example.nimrod.android_project.hirdetes;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.nimrod.android_project.modell.MainActivity;
+import com.example.nimrod.android_project.R;
 import com.squareup.picasso.Picasso;
 
 public class HirdetesDetailedActivity extends AppCompatActivity implements View.OnClickListener{

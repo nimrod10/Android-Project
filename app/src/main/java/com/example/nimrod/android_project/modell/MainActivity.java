@@ -1,4 +1,4 @@
-    package com.example.nimrod.android_project;
+    package com.example.nimrod.android_project.modell;
 
     import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
+    import com.example.nimrod.android_project.R;
+    import com.example.nimrod.android_project.hirdetes.Hirdetes;
+    import com.example.nimrod.android_project.hirdetes.HirdetesActivity;
+    import com.example.nimrod.android_project.hirdetes.HirdetesDetailedActivity;
+    import com.example.nimrod.android_project.internet.AppStatus;
+    import com.example.nimrod.android_project.user.LoginActivity;
+    import com.example.nimrod.android_project.user.ProfileActivity;
+    import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

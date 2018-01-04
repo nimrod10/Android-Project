@@ -1,4 +1,4 @@
-package com.example.nimrod.android_project;
+package com.example.nimrod.android_project.hirdetes;
 
 import java.util.ArrayList;
 

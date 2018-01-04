@@ -1,4 +1,4 @@
-package com.example.nimrod.android_project;
+package com.example.nimrod.android_project.internet;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

@@ -12,19 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".modell.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".HirdetesActivity" />
-        <activity android:name=".HirdetesDetailedActivity" />
-        <activity android:name=".PasswordChangeActivity"></activity>
+        <activity android:name=".user.LoginActivity" />
+        <activity android:name=".user.ProfileActivity" />
+        <activity android:name=".user.RegisterActivity" />
+        <activity android:name=".hirdetes.HirdetesActivity" />
+        <activity android:name=".hirdetes.HirdetesDetailedActivity" />
+        <activity android:name=".user.PasswordChangeActivity"></activity>
     </application>
 
 </manifest>

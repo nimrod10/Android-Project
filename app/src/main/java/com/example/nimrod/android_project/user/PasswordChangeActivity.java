@@ -1,4 +1,4 @@
-package com.example.nimrod.android_project;
+package com.example.nimrod.android_project.user;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nimrod.android_project.R;
+import com.example.nimrod.android_project.internet.AppStatus;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class PasswordChangeActivity extends AppCompatActivity implements View.OnClickListener{
@@ -58,7 +60,12 @@ public class PasswordChangeActivity extends AppCompatActivity implements View.On
             warningMessageView.setText("Passwords are not the same.");
             return;
         }
+        if(!AppStatus.getInstance(getApplicationContext()).isOnline()){
+            warningMessageView.setVisibility(View.VISIBLE);
+            warningMessageView.setText("You're offline.");
+            return;
 
+        }
         firebaseAuth.getCurrentUser().updatePassword(password1);
         Toast.makeText(this, "Password has been updated.", Toast.LENGTH_SHORT).show();
         warningMessageView.setVisibility(View.INVISIBLE);

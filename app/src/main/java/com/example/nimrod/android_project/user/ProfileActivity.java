@@ -1,4 +1,4 @@
-package com.example.nimrod.android_project;
+package com.example.nimrod.android_project.user;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.nimrod.android_project.hirdetes.HirdetesActivity;
+import com.example.nimrod.android_project.modell.MainActivity;
+import com.example.nimrod.android_project.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
